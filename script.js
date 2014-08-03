@@ -10,10 +10,15 @@ if (window.XMLHttpRequest) {
 request.open('GET', 'data.txt');
 request.onreadystatechange = function() {
     if ((request.readyState===4) && (request.status===200)) {
-        var modify = document.getElementById('update');
-        // innerHTML is the element inside the selected elemtn
-        // which in this case, is the 'update' id
-        modify.innerHTML = request.responseText;
+        // this grabs the <ul> lists
+        // then takes only the index[1] list (so the 2nd list)
+        // and then finds the index[2] (or 3rd) <li> element of that list
+        var modify =
+            document.getElementsByTagName('ul')
+            [1].getElementsByTagName('li');
+
+        modify[1].innerHTML =
+            request.responseText;
     }
 }
 request.send();
