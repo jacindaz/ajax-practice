@@ -14,11 +14,12 @@ request.onreadystatechange = function() {
         // then takes only the index[1] list (so the 2nd list)
         // and then finds the index[2] (or 3rd) <li> element of that list
         var modify =
-            document.getElementsByTagName('ul')
-            [1].getElementsByTagName('li');
+            document.getElementsByTagName('li')
 
-        modify[1].innerHTML =
-            request.responseText;
+        for (var i = 0; i < modify.length; i++) {
+            modify[i].innerHTML =
+                request.responseText;
+        }
     }
 }
 request.send();
