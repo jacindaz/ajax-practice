@@ -1,9 +1,9 @@
-== Practicing AJAX
+## Practicing AJAX
 =============
 
 Learning about AJAX through lynda.com videos - JavaScript and AJAX
 
-=== Topics include:
+### Topics include:
 
 * What is AJAX?
 * Making requests asynchronous
