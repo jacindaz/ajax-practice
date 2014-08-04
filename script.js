@@ -7,19 +7,19 @@ if (window.XMLHttpRequest) {
     request = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-request.open('GET', 'data.txt');
+request.open('GET', 'data.xml');
 request.onreadystatechange = function() {
     if ((request.readyState===4) && (request.status===200)) {
-        // this grabs the <ul> lists
-        // then takes only the index[1] list (so the 2nd list)
-        // and then finds the index[2] (or 3rd) <li> element of that list
-        var modify =
-            document.getElementsByTagName('li')
+        console.log(request.responseXML.getElementsByTagName('bio')[0].firstChild.nodeValue);
 
-        for (var i = 0; i < modify.length; i++) {
-            modify[i].innerHTML =
-                request.responseText;
+        var items =
+            request.responseXML.getElementsByTagName('name');
+        var output = '<ul>';
+        for (var i = 0; i < items.length; i++) {
+            output += '<li>' + items[i].firstChild.nodeValue + '</li>';
         }
+        output += '</ul>';
+            document.getElementById('update').innerHTML = output;
     }
 }
 request.send();
