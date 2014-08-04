@@ -7,19 +7,19 @@ if (window.XMLHttpRequest) {
     request = new ActiveXObject("Microsoft.XMLHTTP");
 }
 
-request.open('GET', 'data.xml');
+request.open('GET', 'data.json');
 request.onreadystatechange = function() {
     if ((request.readyState===4) && (request.status===200)) {
-        console.log(request.responseXML.getElementsByTagName('bio')[0].firstChild.nodeValue);
+        var items = JSON.parse(request.responseText);
+        console.log(items);
+        var output = '<ol>';
 
-        var items =
-            request.responseXML.getElementsByTagName('name');
-        var output = '<ul>';
-        for (var i = 0; i < items.length; i++) {
-            output += '<li>' + items[i].firstChild.nodeValue + '</li>';
+        for (var key in items) {
+            output += '<li>' + items[key].reknown + '</li>';
+            console.log("Key: " + key);
         }
-        output += '</ul>';
-            document.getElementById('update').innerHTML = output;
+        output += '</ol>';
+        document.getElementById('update').innerHTML = output;
     }
 }
 request.send();
