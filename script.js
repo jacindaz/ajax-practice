@@ -1,7 +1,5 @@
 var mybutton = document.getElementById('loadbutton');
-mybutton.onclick = loadAJAX;
-
-function loadAJAX() {
+mybutton.onclick = function() {
     var request;
 
     if (window.XMLHttpRequest) {
