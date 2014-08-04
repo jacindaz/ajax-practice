@@ -1,3 +1,6 @@
+var mybutton = document.getElementById('loadbutton');
+mybutton.onclick = loadAJAX;
+
 function loadAJAX() {
     var request;
 
